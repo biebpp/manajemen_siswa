@@ -24,22 +24,26 @@ if (isset($_POST['update'])) {
 
 <body>
     <?php include "navigasi.php"; ?>
-    <div id="main">
-        <div class="container">
-            <h2>EDIT DATA PRODI</h2>
-            <hr>
-            <!--- Form dengan value terisi data lama --->
-            <form method="POST">
-                <label>Kode Prodi</label><br>
+    <div class="container">
+        <h2>EDIT DATA PRODI</h2>
+        <hr>
+        <!--- Form dengan value terisi data lama --->
+        <form method="POST">
+                <div class="form-control">
+                <label>Kode Prodi</label>
                 <input type="text" name="kd_prodi" value="<?php echo $data['kd_prodi']; ?>" required>
-                <label>Nama Prodi</label><br>
-                <input type="text" name="nama_prodi" value="<?php echo $data['nama_prodi']; ?>" required><br><br>
+                </div>
+                
+                <div class="form-control">
+                <label>Nama Prodi</label>
+                <input type="text" name="nama_prodi" value="<?php echo $data['nama_prodi']; ?>" required>
+                </div>
+                
                 <div class="button-control">
                     <a href="prodi.php" class="batal">BATAL</a>
-                    <button type="submit" name="update" class="submit">UPDATE</button> <br> <br>
+                    <button type="submit" name="update" class="submit">UPDATE</button>
                 </div>
             </form>
-        </div>
     </div>
 </body>
 

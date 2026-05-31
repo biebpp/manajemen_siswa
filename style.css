@@ -29,8 +29,52 @@ textarea {
     box-sizing: border-box;
 }
 
-input, button {
+select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input, select {
     color: black;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    position: relative;
+    color: black;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 2em;
+    border: 3px solid #37743a;
+    padding: 0.5em 1em;
+    border-radius: 0.2rem;
+}
+
+.radio-group label:before {
+    content: "";
+    height: 1em;
+    width: 1em;
+    border: 3px solid #37743a;
+    border-radius: 50%;
+}
+
+.radio-group input[type="radio"]:checked + label:before {
+    height: 0.5em;
+    width: 0.5em;
+    border: 0.325em solid #fff;
+    background-color: #4CAF50;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: #37743a;
+    color: #fff;
 }
 
 .login-btn {
@@ -159,6 +203,7 @@ hr {
 }
 
 .button-control {
+    margin-top: 20px;
     display: flex;
 }
 

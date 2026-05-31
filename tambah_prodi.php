@@ -46,14 +46,21 @@ if ($error != "") {
             <h2>TAMBAH DATA PRODI</h2>
             <hr>
             <form method="POST">
-            <label>Kode Prodi</label><br>
-            <input type="text" name="kd_prodi" required><br><br>
-            <label>Nama prodi</label><br>
-            <input type="text" name="nama_prodi" required><br><br>
-            <div class="button-control">
-                <a href="prodi.php" class="batal">BATAL</a>
-                <button type="submit" name="simpan" class="submit">TAMBAH</button> <br> <br>
-            </div>
+
+                <div class="form-control">
+                    <label>Kode Prodi</label>
+                    <input type="text" name="kd_prodi" required>
+                </div>
+
+                <div class="form-control">
+                    <label>Nama prodi</label>
+                    <input type="text" name="nama_prodi" required>
+                </div>
+
+                <div class="button-control">
+                    <a href="prodi.php" class="batal">BATAL</a>
+                    <button type="submit" name="simpan" class="submit">TAMBAH</button>
+                </div>
             </form>
         </div>
     </div>
