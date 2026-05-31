@@ -2,6 +2,7 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     background-color: #f2f2f2;
     margin: 0;
+    padding: 30px;
 }
 
 .navbar {
@@ -14,15 +15,43 @@ body {
 }
 
 .form-control {
-    background-color: tomato;
+    margin-top: 16px;
 }
 
-input {
+input[type="text"],
+input[type="password"],
+
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input, button {
     color: black;
 }
 
-button {
-    color: black;
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #429946;
+    transition: 0.5s;
+}
+
+.login-btn:active {
+    background-color: #6dbf71;
+    transition: 0.2s;
 }
 
 .menu-icon a {
@@ -89,8 +118,18 @@ button {
     font-size: 30px;
 }
 
+.error-control {
+    width: auto;
+    height: fit-content;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
 .container {
-    width: 700px;
+    width: 500px;
     margin: 40px auto;
     background-color: white;
     border: 1px solid #ccc;

@@ -16,6 +16,6 @@
         $_SESSION['user'] = $username;
         header("location: home.php");
     } else {
-        header("location: index.php?p=Username atau Password salah!");
+        header("location: index.php?error=invalid");
     }
 ?>
