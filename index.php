@@ -27,7 +27,12 @@
                 ?>
                     <h3 class="error-control">Username atau Password anda salah!</h3>
                 <?php
-            ;}
+            ;} else if ($error == "session_ranout") {
+                echo ""
+                ?>
+                    <h3 class="error-control">Login terlebih dahulu!</h3>
+                <?php
+            }
         ?>
 
         <form action="cek_login.php" method="POST">

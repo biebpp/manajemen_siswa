@@ -13,7 +13,7 @@ if(!$data) {
 }
 
 //proses hapus
-4hapus =mysqli_query($koneksi, "DELETE FROM siswa WHERE id='$id'");
+$hapus =mysqli_query($koneksi, "DELETE FROM siswa WHERE id='$id'");
 if($hapus) {
     header("location: siswa.php?p=Data berhasil dihapus!");
     exit();

@@ -1,12 +1,32 @@
 <?php
 session_start();
 header("Cache-Control: no-store, no-chace, must-revalidate, max-age=0");
-if (!isset($_SESSION['login'])|| $_SESSION['login'] !=true){
+if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
     header("location: index.php?p=Silahkan login terlebih dahulu!");
     exit();
 }
 include "koneksi.php";
-$data =mysqli_query($koneksi, "SELECT * FROM prodi");
+
+$cari = "";
+$src = "";
+$input = "";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['search'])) {
+        $src = $_POST['search'];
+    }
+
+    if ($src == "cari") {
+        $input = $_POST['input-cari'];
+        $cari = "WHERE nama_prodi LIKE '%$input%'";
+    } else if ($src == "reset") {
+        $cari = "";
+        $input = "";
+    } else {
+    }
+}
+
+$data = mysqli_query($koneksi, "SELECT * FROM prodi $cari");
 ?>
 
 <!DOCTYPE html>
@@ -18,47 +38,57 @@ $data =mysqli_query($koneksi, "SELECT * FROM prodi");
     <script src="script.js"></script>
 </head>
 
-<body> 
-    <?php include "navigasi.php";?>
-    <?php
-    if (isset($_GET['success'])){
-        if($_GET['success']=='tambah') {
-            echo "<p style='color:green;'> Data berhasil di tambahkan!</p>";
-        }
-
-        if ($_GET['success']== 'edit'){
-            echo "<p style='color:green;'>Data berhasil diubah!</p>";
-        }
-    }
-    ?>
+<body>
+    <?php include "navigasi.php"; ?>
     <div class="container">
         <h2> Data Prodi</h2>
-        <hr>
-        <a href="tambah_prodi.php" class="tambah">TAMBAH DATA PRODI</a>
-        <br><br>
+        <hr> <br>
+
+        <?php
+        if (isset($_GET['success'])) {
+            if ($_GET['success'] == 'tambah') {
+                echo "<p style='color:green;'> Data berhasil di tambahkan!</p>";
+            }
+
+            if ($_GET['success'] == 'edit') {
+                echo "<p style='color:green;'>Data berhasil diubah!</p>";
+            }
+        }
+        ?>
+
+        <div class="container-table-control">
+            <a href="tambah_prodi.php" class="tambah">TAMBAH DATA PRODI</a>
+
+            <form method="POST" class="form-cari">
+                <label>Cari Data</label>
+                <input type="text" name="input-cari" placeholder="Isi nama prodi..." value="<?php echo $input; ?>">
+                <button type="submit" name="search" value="cari" class="cari">Cari</button>
+                <button type="submit" name="search" value="reset" class="reset">Reset</button>
+            </form>
+        </div>
+
         <table>
             <tr>
                 <th> Kode Prodi</th>
                 <th> Nama Prodi</th>
                 <th>ACTION</th>
 
-</tr>
-<?php while ($row =mysqli_fetch_assoc($data)) { ?>
-<tr>
-    <td><?php echo $row['kd_prodi']; ?></td>
-    <td><?php echo $row['nama_prodi']; ?></td>
-    <td>
-    <a href= "edit_prodi.php?id_prodi=<?php echo
-    $row['id_prodi']; ?>"<EDIT</a>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                <tr>
+                    <td><?php echo $row['kd_prodi']; ?></td>
+                    <td><?php echo $row['nama_prodi']; ?></td>
+                    <td>
+                        <a class="hapus-action" href="edit_prodi.php?id_prodi=<?php echo
+                            $row['id_prodi']; ?>">EDIT</a>
 
-    <a href="hapus_prodi.php?id_prodi=<?php echo
-    $row['id_prodi']; ?>"
-    onclick="return confrim('Yakin ingin hapus?)"> DELETE</a>
-    </td>
-    </tr>
-    <?php } ?>
-    </table>
+                        <a class="edit-action" href="hapus_prodi.php?id_prodi=<?php echo
+                            $row['id_prodi']; ?>" onclick="return confirm('Yakin ingin hapus?')"> DELETE</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
     </div>
-    </div>
-    </body>
-    </html>
+</body>
+
+</html>

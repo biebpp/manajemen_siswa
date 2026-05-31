@@ -61,6 +61,10 @@ input, button {
     font-weight: bold;
 }
 
+.menu-icon:hover a {
+    text-decoration: underline;
+}
+
 .navbar-nav {
     list-style: none;
     display: flex;
@@ -109,6 +113,7 @@ input, button {
 
 .side-nav a:hover {
     background-color: #285b86;
+    transition: 0.3s;
 }
 
 .btn-close {
@@ -129,7 +134,7 @@ input, button {
 }
 
 .container {
-    width: 500px;
+    width: 700px;
     margin: 40px auto;
     background-color: white;
     border: 1px solid #ccc;
@@ -153,6 +158,10 @@ hr {
     border-top: 1px solid #ddd;
 }
 
+.button-control {
+    display: flex;
+}
+
 .submit {
     width: 100%;
     padding: 10px;
@@ -167,8 +176,26 @@ hr {
     background-color: #163d5c;
 }
 
+.batal {
+    width: 100%;
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.batal:hover {
+    background-color: #bb202f;
+    transition: 0.3s;
+}
+
 .tambah {
     background-color: #4CAF50;
+    text-decoration: none;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -176,7 +203,94 @@ hr {
     cursor: pointer;
 }
 
+.tambah:hover {
+    background-color: #429946;
+    transition: 0.3s;
+}
+
+.edit-action {
+    background-color: #285b86;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-action:hover {
+    background-color: #163d5c;
+    transition: 0.3s;
+}
+
+.hapus-action {
+    background-color: #dc3545;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.hapus-action:hover {
+    background-color: #bb202f;
+    transition: 0.3s;
+}
+
+.container-table-control {
+    display: flex;
+}
+
+.form-cari {
+    margin-left: auto;
+}
+
+.form-cari input[type="text"],
+
+.form-cari textarea {
+    width: 50%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input, button {
+    color: black;
+}
+
+.cari {
+    padding: 10px;
+    background-color: #1F4E79;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cari:hover {
+    background-color: #163d5c;
+}
+
+.reset {
+    background-color: #dc3545;
+    padding: 10px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.reset:hover {
+    background-color: #bb202f;
+    transition: 0.3s;
+}
+
 table {
+    margin-top: 20px;
     border-collapse: collapse;
     width: 100%;
     background-color: white;
@@ -184,9 +298,14 @@ table {
 
 th {
     background-color: #1F4E79;
+    color: white;
 }
 
 th, td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+}
+
+.profil {
+    width: 10vh;
 }

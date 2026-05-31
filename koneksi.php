@@ -9,7 +9,7 @@
     if ($koneksi) {
         $pilih_db = mysqli_select_db($koneksi, $database);
         if ($pilih_db) {
-            echo "success";
+            // echo "success";
         }
     }
 ?>
