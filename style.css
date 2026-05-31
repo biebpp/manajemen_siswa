@@ -13,6 +13,18 @@ body {
     padding: 0 25px;
 }
 
+.form-control {
+    background-color: tomato;
+}
+
+input {
+    color: black;
+}
+
+button {
+    color: black;
+}
+
 .menu-icon a {
     color: white;
     text-decoration: none;
