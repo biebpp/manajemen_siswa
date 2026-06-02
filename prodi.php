@@ -10,6 +10,7 @@ include "koneksi.php";
 $cari = "";
 $src = "";
 $input = "";
+$filter = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['search'])) {
@@ -18,7 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($src == "cari") {
         $input = $_POST['input-cari'];
-        $cari = "WHERE nama_prodi LIKE '%$input%'";
+        $filter = $_POST['filter'];
+
+        if ($filter == "kd") {
+            $etc = "kd_prodi";
+        } else {
+            $etc = "nama_prodi";
+        }
+
+        $cari = "WHERE " . $etc . " LIKE '%$input%'";
     } else if ($src == "reset") {
         $cari = "";
         $input = "";
@@ -60,8 +69,11 @@ $data = mysqli_query($koneksi, "SELECT * FROM prodi $cari");
             <a href="tambah_prodi.php" class="tambah">TAMBAH DATA PRODI</a>
 
             <form method="POST" class="form-cari">
-                <label>Cari Data</label>
-                <input type="text" name="input-cari" placeholder="Isi nama prodi..." value="<?php echo $input; ?>">
+                <select name="filter">
+                    <option value="kd" <?php if ($filter == "kd") { echo "selected"; } ?>><label>Kode</label></option>
+                    <option value="nama" <?php if ($filter == "nama") { echo "selected"; } ?>><label>Nama</label></option>
+                </select>
+                <input type="text" name="input-cari" placeholder="Kolom Pencarian..." value="<?php echo $input; ?>">
                 <button type="submit" name="search" value="cari" class="cari">Cari</button>
                 <button type="submit" name="search" value="reset" class="reset">Reset</button>
             </form>

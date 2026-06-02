@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="login-container">
         <h2>PANEL LOGIN</h2>
         <hr>
 

@@ -2,7 +2,26 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     background-color: #f2f2f2;
     margin: 0;
-    padding: 30px;
+}
+
+.login-container {
+    width: 40%;
+    margin: 40px auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+.login-container p {
+    font-size: 24px;
+    text-align: center;
 }
 
 .navbar {
@@ -99,14 +118,15 @@ input, select {
 }
 
 .menu-icon a {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
     font-size: 20px;
-    font-weight: bold;
+    transition: 0.3s;
 }
 
 .menu-icon:hover a {
-    text-decoration: underline;
+    color: white;
+    font-weight: bold;
 }
 
 .navbar-nav {
@@ -121,13 +141,15 @@ input, select {
 }
 
 .navbar-nav a {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 .navbar-nav a:hover {
-    text-decoration: underline;
+    color: white;
+    font-weight: bold;
 }
 
 .logout a {
@@ -153,11 +175,13 @@ input, select {
     font-size: 18px;
     color: white;
     display: block;
+    transform: scaleX(1);
 }
 
 .side-nav a:hover {
     background-color: #285b86;
     transition: 0.3s;
+    transform: scaleX(1.07);
 }
 
 .btn-close {
@@ -178,7 +202,7 @@ input, select {
 }
 
 .container {
-    width: 700px;
+    width: 60%;
     margin: 40px auto;
     background-color: white;
     border: 1px solid #ccc;
@@ -293,10 +317,14 @@ hr {
     margin-left: auto;
 }
 
+.form-cari select {
+    width: 20%;
+}
+
 .form-cari input[type="text"],
 
 .form-cari textarea {
-    width: 50%;
+    width: 45%;
     padding: 10px 14px;
     border: 1px solid #ccc;
     background-color: #fff;

@@ -1,14 +1,14 @@
 <nav class="navbar">
     <div class="menu-icon">
         <a href="#" onclick="openSlideMenu()">Menu</a>
-
     </div>
+    
     <ul class="navbar-nav">
         <li><a href="home.php"> Home</a></li>
         <li><a href="siswa.php"> Siswa</a></li>
         <li><a href="prodi.php"> Prodi</a></li>
         <li class="logout">
-            <a href="logout.php">
+            <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">
                 Logout (<?php echo $_SESSION['user']; ?>)
             </a>
         </li>
@@ -19,6 +19,6 @@
     <a href="home.php">Home</a>
     <a href="siswa.php">Siswa</a>
     <a href="prodi.php">Prodi</a>
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">Logout</a>
 
 </div>
