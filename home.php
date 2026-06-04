@@ -2,7 +2,7 @@
 session_start();
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
-    header("location: index.php?p+Silahkan login terlebih dahulu!");
+    header("location: index.php?p=Silahkan login terlebih dahulu!");
     exit();
 }
 

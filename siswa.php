@@ -68,6 +68,10 @@ $data = mysqli_query($koneksi, "SELECT s.*, p.nama_prodi FROM siswa s
             if ($_GET['success'] == 'edit') {
                 echo "<p style='color:green;'>Data berhasil diubah!</p>";
             }
+
+            if ($_GET['success'] == 'hapus') {
+                echo "<p style='color:red;'>Data berhasil dihapus!</p>";
+            }
         }
         ?>
 
@@ -101,7 +105,13 @@ $data = mysqli_query($koneksi, "SELECT s.*, p.nama_prodi FROM siswa s
             </tr>
             <?php while ($row = mysqli_fetch_assoc($data)) { ?>
                 <tr>
-                    <td><img src="assets/images/pfp.png" alt="pfp" class="profil"></td>
+                    <td><img src="assets/<?php
+                        if(!$row['profile'] == ""){
+                            echo "uploads/" . $row['profile'];
+                        } else {
+                            echo "images/blank.png";
+                        }
+                    ?>" alt="pfp" class="profil"></td>
                     <td> <?php echo $row['nis']; ?> </td>
                     <td> <?php echo $row['nama']; ?> </td>
                     <td> <?php echo $row['kelas']; ?> </td>

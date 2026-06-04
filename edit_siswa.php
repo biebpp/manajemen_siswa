@@ -21,18 +21,25 @@ if (isset($_POST['update'])) {
     $kd_prodi = $_POST['kd_prodi'];
     $jk = $_POST['jenis_kelamin'];
 
-    mysqli_query($koneksi, "UPDATE siswa SET
+    $target_path = "assets/uploads/";
+    $fileExtension = strtolower(pathinfo($_FILES["pfpFile"]["name"], PATHINFO_EXTENSION));
+    $file = time() . "_" . date('jmY') . "." . $fileExtension;
+    $target_path = $target_path . $file;
+
+    if (move_uploaded_file($_FILES["pfpFile"]["tmp_name"], $target_path)) {
+        mysqli_query($koneksi, "UPDATE siswa SET
         nis='$nis',
         nama='$nama',
         kelas='$kelas',
         tahun_ajaran='$tahun_ajaran',
         kd_prodi='$kd_prodi',
-        jenis_kelamin='$jk'
+        jenis_kelamin='$jk',
+        profile = '$file'
         WHERE id='$id'
     ");
-
     header("location:siswa.php?success=edit");
     exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -49,7 +56,7 @@ if (isset($_POST['update'])) {
         <div class="container">
             <h2>EDIT DATA SISWA</h2>
             <hr>
-            <form method="POST">
+            <form enctype="multipart/form-data" method="POST">
                 <div class="form-control">
                     <label>NIS</label>
                     <input type="text" name="nis" value="<?php echo $data['nis']; ?>" required>
@@ -102,6 +109,13 @@ if (isset($_POST['update'])) {
                             </option>
                         <?php } ?>
                     </select>
+
+                    <div class="form-control">
+                        <div class="input-file">
+                            <label for="file">Upload Photo</label>
+                            <input name="pfpFile" type="file" id="file">
+                        </div>
+                    </div>
 
                     <div class="button-control">
                         <a href="siswa.php" class="batal">BATAL</a>

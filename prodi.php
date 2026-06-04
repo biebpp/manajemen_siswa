@@ -62,6 +62,10 @@ $data = mysqli_query($koneksi, "SELECT * FROM prodi $cari");
             if ($_GET['success'] == 'edit') {
                 echo "<p style='color:green;'>Data berhasil diubah!</p>";
             }
+
+            if ($_GET['success'] == 'hapus') {
+                echo "<p style='color:red;'>Data berhasil dihapus!</p>";
+            }
         }
         ?>
 

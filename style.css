@@ -243,6 +243,7 @@ hr {
 
 .submit:hover {
     background-color: #163d5c;
+    transition: 0.3s;
 }
 
 .batal {
@@ -309,6 +310,27 @@ hr {
     transition: 0.3s;
 }
 
+.input-file input[type="file"] {
+    display: none;
+}
+
+.input-file {
+    width: fit-content;
+    background-color: #285b86;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-file:hover {
+    background-color: #163d5c;
+    transition: 0.3s;
+}
+
 .container-table-control {
     display: flex;
 }
@@ -346,6 +368,7 @@ input, button {
 
 .cari:hover {
     background-color: #163d5c;
+    transition: 0.3s;
 }
 
 .reset {
@@ -380,5 +403,8 @@ th, td {
 }
 
 .profil {
-    width: 10vh;
+    width: 12vh;
+    height: 12vh;
+    border: none;
+    border-radius: 50%;
 }
