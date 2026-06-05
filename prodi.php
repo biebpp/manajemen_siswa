@@ -56,15 +56,15 @@ $data = mysqli_query($koneksi, "SELECT * FROM prodi $cari");
         <?php
         if (isset($_GET['success'])) {
             if ($_GET['success'] == 'tambah') {
-                echo "<p style='color:green;'> Data berhasil di tambahkan!</p>";
+                echo "<p class='success-control'> Data berhasil di tambahkan!</p>";
             }
 
             if ($_GET['success'] == 'edit') {
-                echo "<p style='color:green;'>Data berhasil diubah!</p>";
+                echo "<p class='success-control'>Data berhasil diubah!</p>";
             }
 
             if ($_GET['success'] == 'hapus') {
-                echo "<p style='color:red;'>Data berhasil dihapus!</p>";
+                echo "<p class='success-control'>Data berhasil dihapus!</p>";
             }
         }
         ?>

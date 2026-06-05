@@ -4,7 +4,7 @@ include "koneksi.php";
 $prodi = mysqli_query($koneksi, "SELECT * FROM prodi");
 $error = "";
 
-if (isset($_POST['simpan'])) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nis = $_POST['nis'];
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
@@ -12,9 +12,7 @@ if (isset($_POST['simpan'])) {
     $kd_prodi = $_POST['kd_prodi'];
     $jk = $_POST['jenis_kelamin'];
 
-    if (empty($nis) || empty($nama)) {
-        $error = "Data wajib diisi!";
-    } else {
+    if (!$_POST['pfpFile'] = "") {
         $target_path = "assets/uploads/";
         $fileExtension = strtolower(pathinfo($_FILES["pfpFile"]["name"], PATHINFO_EXTENSION));
         $file = time() . "_" . date('jmY') . "." . $fileExtension;
@@ -27,7 +25,14 @@ if (isset($_POST['simpan'])) {
             mysqli_query($koneksi, $query);
             header("location: siswa.php?success=tambah");
             exit();
-        }
+        } else {
+        $query = "INSERT INTO siswa
+        (nis, nama, kelas, tahun_ajaran, kd_prodi, jenis_kelamin)
+        VALUES ('$nis','$nama','$kelas','$tahun_ajaran','$kd_prodi','$jk')";
+        mysqli_query($koneksi, $query);
+        header("location: siswa.php?success=tambah");
+        exit();
+    } 
     }
 }
 ?>

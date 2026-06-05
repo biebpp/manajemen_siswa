@@ -9,11 +9,11 @@ if (!isset($_SESSION['login'])) {
 }
 
 $id = $_GET['id'];
-$query = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id='$id'");
+$query = mysqli_query($koneksi, "SELECT nis, nama, kelas, kd_prodi, tahun_ajaran, jenis_kelamin FROM siswa WHERE id='$id'");
 $data = mysqli_fetch_assoc($query);
 $prodi = mysqli_query($koneksi, "SELECT * FROM prodi");
 
-if (isset($_POST['update'])) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nis = $_POST['nis'];
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
@@ -21,13 +21,26 @@ if (isset($_POST['update'])) {
     $kd_prodi = $_POST['kd_prodi'];
     $jk = $_POST['jenis_kelamin'];
 
-    $target_path = "assets/uploads/";
-    $fileExtension = strtolower(pathinfo($_FILES["pfpFile"]["name"], PATHINFO_EXTENSION));
-    $file = time() . "_" . date('jmY') . "." . $fileExtension;
-    $target_path = $target_path . $file;
-
-    if (move_uploaded_file($_FILES["pfpFile"]["tmp_name"], $target_path)) {
+    if ($_POST['pfpFile'] = "") {
         mysqli_query($koneksi, "UPDATE siswa SET
+        nis='$nis',
+        nama='$nama',
+        kelas='$kelas',
+        tahun_ajaran='$tahun_ajaran',
+        kd_prodi='$kd_prodi',
+        jenis_kelamin='$jk'
+        WHERE id='$id'
+        ");
+        header("location: siswa.php?success=tambah?t=" . $_POST['pfpFile']);
+        exit();
+    } else {
+        $target_path = "assets/uploads/";
+        $fileExtension = strtolower(pathinfo($_FILES["pfpFile"]["name"], PATHINFO_EXTENSION));
+        $file = time() . "_" . date('jmY') . "." . $fileExtension;
+        $target_path = $target_path . $file;
+
+        if (move_uploaded_file($_FILES["pfpFile"]["tmp_name"], $target_path)) {
+            mysqli_query($koneksi, "UPDATE siswa SET
         nis='$nis',
         nama='$nama',
         kelas='$kelas',
@@ -36,9 +49,22 @@ if (isset($_POST['update'])) {
         jenis_kelamin='$jk',
         profile = '$file'
         WHERE id='$id'
-    ");
-    header("location:siswa.php?success=edit");
-    exit();
+        ");
+            header("location:siswa.php?success=edit");
+            exit();
+        } else {
+            mysqli_query($koneksi, "UPDATE siswa SET
+        nis='$nis',
+        nama='$nama',
+        kelas='$kelas',
+        tahun_ajaran='$tahun_ajaran',
+        kd_prodi='$kd_prodi',
+        jenis_kelamin='$jk'
+        WHERE id='$id'
+        ");
+        header("location: siswa.php?success=edit" . $_POST['pfpFile']);
+        exit();
+        }
     }
 }
 ?>
